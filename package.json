@@ -3,28 +3,38 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "wow.js": "^1.2.2"
+  },
   "devDependencies": {
     "browser-sync": "^2.26.13",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-image": "^6.2.1",
+    "gulp-postcss": "^9.0.0",
     "gulp-sass": "^4.1.0",
     "node-sass": "^5.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup-w": "npm install -g windows-build-tools",
+    "setup-l": "apt-get install -y libjpeg libpng",
+    "setup-m": "brew install libjpeg libpng",
+    "setup-g": "npm i gulp-cli -g && npm i"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chernyshovmaksim/pension.git"
+    "url": "git+https://github.com/chernyshovmaksim/gulp-boilerplate.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Chernyshov Max <chernyshovmaksim56@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chernyshovmaksim/pension/issues"
+    "url": "https://github.com/chernyshovmaksim/gulp-boilerplate/issues"
   },
-  "homepage": "https://github.com/chernyshovmaksim/pension#readme"
+  "homepage": "https://github.com/chernyshovmaksim/gulp-boilerplate#readme"
 }
