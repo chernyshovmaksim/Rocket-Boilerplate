@@ -22,18 +22,15 @@ html {
     font-size: 12px;
     font-weight: bold;
     top: 100%;
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
-    transform: translateY(-100%);
-    margin-top: -2em;
+    margin-left: -110px;
+    margin-top: -150px;
     left: 50%;
     margin-left: -110px;
     text-align: center;
+    color: #2e2e2e;
     opacity: 0.6; }
     .wrapper__logo span {
-      color: red; }
+      color: #ff5e5e; }
   .wrapper__icon {
     position: absolute;
     left: 50%;

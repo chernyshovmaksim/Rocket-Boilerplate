@@ -12,8 +12,10 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const concatCss = require('gulp-concat-css');
 const csso = require('gulp-csso');
-const concat = require('gulp-concat');
 const image = require('gulp-image');
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
+const webpackConfig = require('./webpack.config');
 
 function clean(cb) {
     return del(['./build/**', '!./build']);
@@ -24,7 +26,8 @@ function server(cb) {
     return bs.init({
         server: {
             baseDir: './build'
-        }
+        },
+        // tunnel: 'gulp-boilerplate'
     });
     cb();
 }
@@ -41,7 +44,6 @@ function sassToCss(cb) {
 
 function copyCss(cb) {
     return src([
-        './node_modules/animate.css/animate.min.css',
         './src/css/*.css'
     ])
         .pipe(concatCss('main.css'))
@@ -65,11 +67,9 @@ function copyImages(cb) {
 
 function javascript(cb) {
     return src([
-        './src/js/libs/jquery-3.5.1.min.js',
-        './node_modules/wow.js/dist/wow.min.js',
         './src/js/main.js'
     ])
-        .pipe(concat('main.js'))
+        .pipe(webpackStream(webpackConfig), webpack)
         .pipe(dest('./build/js/'));
     cb();
 }
