@@ -8,15 +8,15 @@ npm run setup-g
 
 ### Далее
 
-#### Для **Windows
+#### Для **Windows**
 ```
 npm run setup-w
 ```
-#### Для **Linux
+#### Для **Linux**
 ```
 npm run setup-l
 ```
-#### Для **Mac
+#### Для **Mac**
 ```
 npm run setup-m
 ```
