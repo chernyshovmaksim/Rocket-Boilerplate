@@ -87,23 +87,17 @@ function build(cb) {
     cb();
 }
 
-function dev(cb) {
-    return series(
-        clean,
-        sassToCss,
-        copyCss,
-        javascript,
-        copyHtml,
-        copyImages,
-        parallel(
-            server,
-            watcher
-        )
-    );
-    cb();
-}
-
-
 exports.default = build;
 
-exports.dev = dev;
+exports.dev = series(
+    clean,
+    sassToCss,
+    copyCss,
+    javascript,
+    copyHtml,
+    copyImages,
+    parallel(
+        server,
+        watcher
+    )
+);
