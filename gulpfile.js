@@ -11,6 +11,7 @@ const bs = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const pug = require('gulp-pug-3');
 const sass = require('gulp-sass');
+const stylus = require('gulp-stylus');
 const autoprefixer = require('gulp-autoprefixer');
 const concatCss = require('gulp-concat-css');
 const csso = require('gulp-csso');
@@ -33,15 +34,27 @@ function server(cb) {
     cb();
 }
 
-function sassToCss(cb) {
-    return src('./src/sass/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
+// STYLUS
+function preprocToCss(cb) {
+    return src('./src/stylus/**/*.styl')
+        .pipe(stylus())
         .pipe(autoprefixer({
             cascade: false,
         }))
         .pipe(dest('./src/css'));
     cb();
 }
+
+// SASS
+// function preprocToCss(cb) {
+//     return src('./src/sass/**/*.scss')
+//         .pipe(sass().on('error', sass.logError))
+//         .pipe(autoprefixer({
+//             cascade: false,
+//         }))
+//         .pipe(dest('./src/css'));
+//     cb();
+// }
 
 function copyCss(cb) {
     return src([
@@ -98,7 +111,8 @@ function javascript(cb) {
 
 function watcher(cb) {
     watch('./src/js/**/*', javascript);
-    watch('./src/sass/**/*', sassToCss);
+    watch('./src/sass/**/*', preprocToCss);
+    watch('./src/stylus/**/*', preprocToCss);
     watch('./src/css/*', copyCss);
     watch('./src/img/**/*', copyImages);
     watch('./src/templates/**/*', pugToHtml);
@@ -110,7 +124,7 @@ function watcher(cb) {
 
 exports.default = series(
     clean,
-    sassToCss,
+    preprocToCss,
     copyCss,
     javascript,
     pugToHtml,
@@ -120,7 +134,7 @@ exports.default = series(
 
 exports.dev = series(
     clean,
-    sassToCss,
+    preprocToCss,
     copyCss,
     javascript,
     pugToHtml,

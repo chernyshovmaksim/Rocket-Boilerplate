@@ -1,18 +1,29 @@
 doctype html
-head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1')
-    title Gulp boilerplate
-    link(rel='stylesheet' href='./css/main.css')
+html(lang="ru")
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+        title Gulp boilerplate by Chernyshov Max
+        link(rel='stylesheet' href='./css/main.css')
 
+    body.body
+        header.header
+            .container
+                .header__logo.logo
+                    .logo__link
+                        a(href="/")
+                            span Gulp
+                            |  Boilerplate by Max Chernyshov
 
-.wrapper
-    .wrapper__logo
-        span Gulp
-        |  boilerplate by Chernyshov Max
-    .wrapper__icon
-        img(src='./img/shuttle.png' alt='Lets`go')
-    .wrapper__text Это строка скомпилирована из Pug
+        section.content
+            .container
+
+        footer.footer
+            .container
+                .footer__copyright.copyright
+                    .copyright__link
+                        a(href="#") Max Chernyshov
+
 
 
 script(src='./js/main.js')

@@ -1,5 +1,5 @@
 # Gulp Boilerplate
-## Browser-sync + sass + pug + animejs
+## Browser-sync + sass or stylus + pug + animejs
 
 
 ### Dev
