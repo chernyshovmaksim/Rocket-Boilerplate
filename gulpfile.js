@@ -35,8 +35,10 @@ function server(cb) {
 }
 
 // STYLUS
-function preprocToCss(cb) {
-    return src('./src/stylus/**/*.styl')
+function preProcToCss(cb) {
+    return src([
+        './src/stylus/*.styl',
+    ])
         .pipe(stylus())
         .pipe(autoprefixer({
             cascade: false,
@@ -46,7 +48,7 @@ function preprocToCss(cb) {
 }
 
 // SASS
-// function preprocToCss(cb) {
+// function preProcToCss(cb) {
 //     return src('./src/sass/**/*.scss')
 //         .pipe(sass().on('error', sass.logError))
 //         .pipe(autoprefixer({
@@ -111,8 +113,8 @@ function javascript(cb) {
 
 function watcher(cb) {
     watch('./src/js/**/*', javascript);
-    watch('./src/sass/**/*', preprocToCss);
-    watch('./src/stylus/**/*', preprocToCss);
+    watch('./src/sass/**/*', preProcToCss);
+    watch('./src/stylus/**/*', preProcToCss);
     watch('./src/css/*', copyCss);
     watch('./src/img/**/*', copyImages);
     watch('./src/templates/**/*', pugToHtml);
@@ -124,7 +126,7 @@ function watcher(cb) {
 
 exports.default = series(
     clean,
-    preprocToCss,
+    preProcToCss,
     copyCss,
     javascript,
     pugToHtml,
@@ -134,7 +136,7 @@ exports.default = series(
 
 exports.dev = series(
     clean,
-    preprocToCss,
+    preProcToCss,
     copyCss,
     javascript,
     pugToHtml,

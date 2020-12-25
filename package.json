@@ -29,9 +29,9 @@
     "webpack-stream": "^6.1.1"
   },
   "scripts": {
-    "first-setup": "npm install -g windows-build-tools",
     "setup": "npm i gulp-cli -g && npm i",
-    "dev": "gulp dev"
+    "dev": "gulp dev",
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
