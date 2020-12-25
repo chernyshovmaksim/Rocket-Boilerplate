@@ -8,11 +8,12 @@ const {
 
 const del = require('del');
 const bs = require('browser-sync').create();
+const imagemin = require('gulp-imagemin');
+const pug = require('gulp-pug-3');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const concatCss = require('gulp-concat-css');
 const csso = require('gulp-csso');
-const image = require('gulp-image');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const webpackConfig = require('./webpack.config');
@@ -52,6 +53,13 @@ function copyCss(cb) {
     cb();
 }
 
+function pugToHtml(cb){
+    return src('./src/templates/*.pug')
+        .pipe(pug({}))
+        .pipe(dest('./src'));
+    cb();
+}
+
 function copyHtml(cb) {
     return src('./src/*.html')
         .pipe(dest('build'));
@@ -60,7 +68,7 @@ function copyHtml(cb) {
 
 function copyImages(cb) {
     return src('./src/img/**/*')
-        .pipe(image())
+        .pipe(imagemin())
         .pipe(dest('./build/img/'));
     cb();
 }
@@ -91,6 +99,7 @@ function watcher(cb) {
     watch('./src/sass/**/*', sassToCss);
     watch('./src/css/*', copyCss);
     watch('./src/img/**/*', copyImages);
+    watch('./src/templates/**/*', pugToHtml);
     watch('./src/*.html', copyHtml);
     watch('./build/**/*').on('change', bs.reload);
     cb();
@@ -102,6 +111,7 @@ exports.default = series(
     sassToCss,
     copyCss,
     javascript,
+    pugToHtml,
     copyHtml,
     copyImages
 );
@@ -111,6 +121,7 @@ exports.dev = series(
     sassToCss,
     copyCss,
     javascript,
+    pugToHtml,
     copyHtml,
     copyImages,
     parallel(
