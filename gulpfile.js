@@ -102,7 +102,7 @@ function watcher(cb) {
     watch('./src/css/*', copyCss);
     watch('./src/img/**/*', copyImages);
     watch('./src/templates/**/*', pugToHtml);
-    watch('./src/*.html', copyHtml);
+    watch('./src/**/*.html', copyHtml);
     watch('./build/**/*').on('change', bs.reload);
     cb();
 }
