@@ -43,3 +43,10 @@ html {
       width: 100%;
       height: auto;
       opacity: 0.6; }
+  .wrapper__text {
+    font-size: 0.8em;
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    font-family: Arial, Helvetica, sans-serif, serif;
+    color: gray; }

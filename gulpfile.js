@@ -55,7 +55,9 @@ function copyCss(cb) {
 
 function pugToHtml(cb){
     return src('./src/templates/*.pug')
-        .pipe(pug({}))
+        .pipe(pug({
+            pretty: true
+        }))
         .pipe(dest('./src'));
     cb();
 }
