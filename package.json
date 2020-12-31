@@ -25,7 +25,7 @@
     "gulp-stylus": "^2.7.0",
     "node-sass": "^5.0.0",
     "style-loader": "^2.0.0",
-    "webpack": "^5.11.0",
+    "webpack": "^5.11.1",
     "webpack-stream": "^6.1.1"
   },
   "scripts": {
