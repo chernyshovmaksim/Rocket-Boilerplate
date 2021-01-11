@@ -9,7 +9,7 @@ module.exports = {
     mode: 'development',
     devServer: {
         historyApiFallback: true,
-        contentBase: path.resolve(__dirname, './dist'),
+        contentBase: './dist',
         open: true,
         compress: false,
         hot: true,
@@ -72,7 +72,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Html boilerplate',
+            title: 'Rocket boilerplate',
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html'
         }),

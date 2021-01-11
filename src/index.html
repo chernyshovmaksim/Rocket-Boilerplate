@@ -1,20 +1,31 @@
 <!-- ./src/index.html -->
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= htmlWebpackPlugin.options.title %> by Chernyshov Max</title>
-  </head>
-  <body class="body">
-    <header class="header bg-green-900 py-6">
-      <div class="container mx-auto flex justify-between">
-        <div class="logo">
-          <a href="/">
-            <img class="w-8 rounded" src="./img/shuttle.png" alt="<%= htmlWebpackPlugin.options.title %>">
-          </a>
-        </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    <%= htmlWebpackPlugin.options.title %> by Chernyshov Max
+  </title>
+  <link rel="shortcut icon" href="./img/shuttle.png" type="image/png">
+</head>
+<body class="body antialiased">
+  <header class="header bg-white py-4 shadow-xl">
+    <div class="container mx-auto flex items-center">
+      <div class="logo">
+        <a href="/">
+          <img class="w-8 rounded" src="./img/shuttle.png" alt="<%= htmlWebpackPlugin.options.title %>">
+        </a>
       </div>
-    </header>
-  </body>
+      <div class="brand block text-gray-400 font-light ml-8 cursor-pointer leading-none ">
+        <span class="text-red-500 font-extrabold">Rocket boilerplate</span> by Chernyshov Max
+      </div>
+      <div class="contacts ml-auto text-xs text-green-900 font-bold">
+        <a href="mailto://chernyshovmaksim56@gmail.com">chernyshovmaksim56@gmail.com</a>
+      </div>
+    </div>
+  </header>
+</body>
+
 </html>
