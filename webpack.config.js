@@ -70,7 +70,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
         new HtmlWebpackPlugin({
             title: 'Rocket boilerplate',
             template: path.resolve(__dirname, './src/index.html'),
