@@ -38,13 +38,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chernyshovmaksim/gulp-boilerplate.git"
+    "url": "git+https://github.com/chernyshovmaksim/Rocket-Boilerplate.git"
   },
   "keywords": [],
   "author": "Chernyshov Max <chernyshovmaksim56@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chernyshovmaksim/gulp-boilerplate/issues"
+    "url": "https://github.com/chernyshovmaksim/Rocket-Boilerplate/issues"
   },
-  "homepage": "https://github.com/chernyshovmaksim/gulp-boilerplate#readme"
+  "homepage": "https://github.com/chernyshovmaksim/Rocket-Boilerplate#readme"
 }
