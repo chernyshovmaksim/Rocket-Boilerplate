@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -41,14 +40,6 @@ module.exports = {
                     },
                     {
                         loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    require('tailwindcss')('tailwind.config.js'),
-                                    require('autoprefixer')
-                                ]
-                            }
-                        }
                     },
                     {
                         loader: 'sass-loader'
