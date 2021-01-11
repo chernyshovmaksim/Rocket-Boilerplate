@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 
@@ -10,9 +11,9 @@ module.exports = {
         historyApiFallback: true,
         contentBase: path.resolve(__dirname, './dist'),
         open: true,
-        compress: true,
+        compress: false,
         hot: true,
-        port: 8080,
+        port: 8080
     },
     entry: './src/js/index.js',
     output: {
@@ -52,13 +53,13 @@ module.exports = {
             {
                 test: /\.(scss|css)$/,
                 use: [
-                    { 
-                        loader: 'style-loader' 
+                    {
+                        loader: 'style-loader',
                     },
-                    { 
-                        loader: 'css-loader' 
+                    {
+                        loader: 'css-loader'
                     },
-                    { 
+                    {
                         loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
@@ -69,20 +70,25 @@ module.exports = {
                             }
                         }
                     },
-                    { 
-                        loader: 'sass-loader' 
+                    {
+                        loader: 'sass-loader'
                     }
                 ],
             },
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Html boilerplate',
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html'
         }),
-        new CleanWebpackPlugin(),
+        new CopyPlugin({
+            patterns: [
+                { from: "./src/img", to: "./img" },
+            ],
+        }),
         new webpack.HotModuleReplacementPlugin()
     ]
 }

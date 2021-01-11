@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 
@@ -15,18 +16,7 @@ module.exports = {
     optimization: {
         runtimeChunk: 'single',
         splitChunks: {
-            chunks: 'all',
-            maxInitialRequests: Infinity,
-            minSize: 0,
-            // cacheGroups: {
-            //     vendor: {
-            //         test: /[\\/]node_modules[\\/]/,
-            //         name(module) {
-            //             const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-            //             return `npm.${packageName.replace('@', '')}`;
-            //         },
-            //     },
-            // },
+            chunks: 'all'
         },
     },
     module: {
@@ -45,36 +35,51 @@ module.exports = {
             {
                 test: /\.(scss|css)$/,
                 use: [
-                    { 
-                        loader: 'style-loader'
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader'
                     },
-                    { 
-                        loader: 'css-loader' 
-                    },
-                    { 
+                    {
                         loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    require('tailwindcss')('./tailwind.config.js'),
+                                    require('tailwindcss')('tailwind.config.js'),
                                     require('autoprefixer')
                                 ]
                             }
                         }
                     },
-                    { 
-                        loader: 'sass-loader' 
+                    {
+                        loader: 'sass-loader'
                     }
                 ],
             },
+            // IMAGES
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                    },
+                ]
+            }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-                title: 'Html boilerplate',
-                template: path.resolve(__dirname, './src/index.html'),
-                filename: 'index.html'
-        })
+            title: 'Html boilerplate',
+            template: path.resolve(__dirname, './src/index.html'),
+            filename: 'index.html'
+        }),
+        new MiniCssExtractPlugin({
+            linkType: 'text/css',
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: "./src/img", to: "./img" },
+            ],
+        }),
     ]
 }
