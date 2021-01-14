@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "animejs": "^3.2.1",
     "autoprefixer": "^9.8.6",
+    "jquery": "^3.5.1",
     "mmenu-light": "^3.0.7",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
@@ -38,13 +40,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chernyshovmaksim/Rocket-Boilerplate.git"
+    "url": "git+https://github.com/chernyshovmaksim/gulp-boilerplate.git"
   },
   "keywords": [],
   "author": "Chernyshov Max <chernyshovmaksim56@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chernyshovmaksim/Rocket-Boilerplate/issues"
+    "url": "https://github.com/chernyshovmaksim/gulp-boilerplate/issues"
   },
-  "homepage": "https://github.com/chernyshovmaksim/Rocket-Boilerplate#readme"
+  "homepage": "https://github.com/chernyshovmaksim/gulp-boilerplate#readme"
 }

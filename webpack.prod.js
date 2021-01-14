@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -30,20 +31,29 @@ module.exports = {
                     }
                 }
             },
-            // CSS, PostCSS, Sass
+            // PostCSS, Sass
             {
-                test: /\.(scss|css)$/,
+                test: /\.(scss)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
+            },
+            // Css
+            {
+                test: /\.(css)$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
                     {
                         loader: 'css-loader'
                     },
                     {
-                        loader: 'postcss-loader',
+                        loader: 'postcss-loader'
                     },
-                    {
-                        loader: 'sass-loader'
-                    }
                 ],
             },
             // IMAGES
@@ -60,7 +70,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Rocket boilerplate',
+            title: 'Rocket Boilerplate',
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html'
         }),
@@ -72,5 +82,9 @@ module.exports = {
                 { from: "./src/img", to: "./img" },
             ],
         }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
     ]
 }

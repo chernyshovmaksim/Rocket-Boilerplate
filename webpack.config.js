@@ -8,12 +8,12 @@ const path = require('path');
 module.exports = {
     mode: 'development',
     devServer: {
-        historyApiFallback: true,
+        // historyApiFallback: true,
         contentBase: './dist',
         open: true,
-        compress: false,
-        hot: true,
-        port: 8080
+        // compress: false,
+        // hot: true,
+        // port: 8080
     },
     entry: './src/js/index.js',
     output: {
@@ -49,9 +49,9 @@ module.exports = {
                     }
                 }
             },
-            // CSS, PostCSS, Sass
+            // PostCSS, Sass
             {
-                test: /\.(scss|css)$/,
+                test: /\.(scss)$/,
                 use: [
                     {
                         loader: 'style-loader',
@@ -67,12 +67,28 @@ module.exports = {
                     }
                 ],
             },
+            // Css
+            {
+                test: /\.(css)$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                ],
+            },
+
         ]
     },
     plugins: [
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
         new HtmlWebpackPlugin({
-            title: 'Rocket boilerplate',
+            title: 'Rocket BoilerPlate',
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html'
         }),
@@ -81,6 +97,10 @@ module.exports = {
                 { from: "./src/img", to: "./img" },
             ],
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
     ]
 }
